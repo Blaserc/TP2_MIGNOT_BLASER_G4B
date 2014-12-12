@@ -2,14 +2,14 @@ package fr.unilim.info.fixture;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.experimental.categories.Categories.ExcludeCategory;
 
-import com.sun.tracing.dtrace.Attributes;
 import fr.unilim.info.Animal;
+import fr.unilim.info.SoinEnum;
 import fr.unilim.info.Zoo;
 
 public class ZooTest {
@@ -88,5 +88,42 @@ public class ZooTest {
 		String resultat = animauxZoo.toString();
 		//Then
 		assertEquals(expected, resultat);
+	}
+	
+	@Test
+	public void quantiteViande() {
+		//Given
+		double expected = (150.0+205.0+90.45+3.5)/4;
+		//When
+		double resultat = animauxZoo.calculerQuantiteViandeZoo();
+		//Then
+		assertEquals(expected, resultat, 0);
+	}
+	
+	@Test
+	public void testSoinDents() {
+		//Given
+		List<Animal> animauxAttendus = new ArrayList<Animal>();
+		animauxAttendus.add(animauxZoo.getAnimaux().get(4));
+		animauxAttendus.add(animauxZoo.getAnimaux().get(5));
+		animauxAttendus.add(animauxZoo.getAnimaux().get(6));
+		animauxAttendus.add(animauxZoo.getAnimaux().get(7));
+		//When
+		List<Animal> animauxASoigner = animauxZoo.recupererAnimauxASoigner(SoinEnum.DENTS);
+		//Then
+		assertEquals(animauxAttendus, animauxASoigner);
+	}
+	
+	@Test
+	public void testSoinPieds() {
+		//Given
+		List<Animal> animauxAttendus = new ArrayList<Animal>();
+		animauxAttendus.add(animauxZoo.getAnimaux().get(1));
+		animauxAttendus.add(animauxZoo.getAnimaux().get(2));
+		animauxAttendus.add(animauxZoo.getAnimaux().get(5));
+		//When
+		List<Animal> animauxASoigner = animauxZoo.recupererAnimauxASoigner(SoinEnum.PIEDS);
+		//Then
+		assertEquals(animauxAttendus, animauxASoigner);
 	}
 }
