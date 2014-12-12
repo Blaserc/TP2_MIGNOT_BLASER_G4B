@@ -11,6 +11,10 @@ public class Zoo {
 		this.animaux = new ArrayList<Animal>();
 	}
 
+	public List<Animal> getAnimaux() {
+		return this.animaux;
+	}
+	
 	public void ajouterAnimal(Animal animal) {
 		if (animal == null) {
 			throw new IllegalArgumentException();
@@ -31,7 +35,7 @@ public class Zoo {
 	public String toString() {
 		String res = "";
 		for (Animal animal : this.animaux) {
-			res += animal.toString() + "\n";
+			res += animal.toString()+"\n";
 		}
 		return res;
 	}
