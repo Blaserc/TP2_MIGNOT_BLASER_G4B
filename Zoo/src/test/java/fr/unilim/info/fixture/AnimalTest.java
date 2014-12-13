@@ -62,6 +62,24 @@ public class AnimalTest {
 		//Then
 		assertTrue(resultat);
 	}
+	
+	/**
+	 * Tester si notre méthode equals renvoie false
+	 * lorsqu'elle compare deux animaux de poids, régimes
+	 * et espèces différents
+	 */
+	@Test
+	public void equalsInstanceofAnimalFalse() {
+		//Given
+		Animal dada = new Animal("dada", false, 300);
+		Animal poney = new Animal("poney", true, 350.5);
+		
+		//When
+		boolean resultat = dada.equals(poney);
+		
+		//Then
+		assertFalse(resultat);
+	}
 
 	/**
 	 * Tester si notre méthode equals renvoie false
@@ -69,13 +87,31 @@ public class AnimalTest {
 	 * mais d'espèces et régimes différents
 	 */
 	@Test
-	public void equalsInstanceofAnimalFalseNom() {
+	public void equalsInstanceofAnimalFalseNomRegime() {
 		//Given
 		Animal dada = new Animal("dada", false, 300);
 		Animal lion = new Animal("lion", true, 300);
 		
 		//When
 		boolean resultat = dada.equals(lion);
+		
+		//Then
+		assertFalse(resultat);
+	}
+	
+	/**
+	 * Tester si notre méthode equals renvoie false
+	 * lorsqu'elle compare deux animaux de mêmes espèces et régimes 
+	 * mais de poids différents
+	 */
+	@Test
+	public void equalsInstanceofAnimalFalsePoids() {
+		//Given
+		Animal dada = new Animal("dada", false, 300);
+		Animal poney = new Animal("dada", false, 104.7);
+		
+		//When
+		boolean resultat = dada.equals(poney);
 		
 		//Then
 		assertFalse(resultat);
@@ -101,14 +137,50 @@ public class AnimalTest {
 	
 	/**
 	 * Tester si notre méthode equals renvoie false
-	 * lorsqu'elle compare deux animaus de mêmes poids et régime
+	 * lorsqu'elle compare deux animaux de même espèce et poids 
+	 * mais de régimes différents
+	 */
+	@Test
+	public void equalsInstanceofAnimalFalseRegime() {
+		//Given
+		Animal dada = new Animal("dada", false, 300);
+		Animal poney = new Animal("poney", false, 400);
+		
+		//When
+		boolean resultat = dada.equals(poney);
+		
+		//Then
+		assertFalse(resultat);
+	}
+	
+	/**
+	 * Tester si notre méthode equals renvoie false
+	 * lorsqu'elle compare deux animaux de même poids et régime
 	 * mais d'espèces différentes
 	 */
 	@Test
-	public void equalsInstanceofAnimalFalsePoids() {
+	public void equalsInstanceofAnimalFalseEspece() {
 		//Given
 		Animal dada = new Animal("dada", false, 300);
-		Animal poney = new Animal("dada", false, 350.5);
+		Animal poney = new Animal("poney", false, 300);
+		
+		//When
+		boolean resultat = dada.equals(poney);
+		
+		//Then
+		assertFalse(resultat);
+	}
+	
+	/**
+	 * Tester si notre méthode equals renvoie false
+	 * lorsqu'elle compare deux animaux de même espèce
+	 * mais de poids et régimes différents
+	 */
+	@Test
+	public void equalsInstanceofAnimalFalseRegimePoids() {
+		//Given
+		Animal dada = new Animal("dada", false, 300);
+		Animal poney = new Animal("dada", true, 109.98);
 		
 		//When
 		boolean resultat = dada.equals(poney);
@@ -131,5 +203,35 @@ public class AnimalTest {
 		
 		//Then
 		assertEquals(resultatAttendu, resultatDonne);
+	}
+	
+	/**
+	 * Tester si la quantité de viande hebdomadaire renvoyée 
+	 * d'un animal carnivore est un quart de son poids
+	 */
+	@Test
+	public void qteViandeHebdoCarnivore() {
+		//Given
+		Animal dragon = new Animal("dragon", true, 947.49);
+		double expected = 947.49/4;
+		//When
+		double qte = dragon.calculerViandeHebdo();
+		//Then
+		assertEquals(expected, qte, 0);
+	}
+	
+	/**
+	 * Tester si la quantité de viande hebdomadaire renvoyée 
+	 * d'un animal non-carnivore est 0
+	 */
+	@Test
+	public void qteViandeHebdoNonCarnivore() {
+		//Given
+		Animal panda = new Animal("panda", false, 508.73);
+		double expected = 0.0;
+		//When
+		double qte = panda.calculerViandeHebdo();
+		//Then
+		assertEquals(expected, qte, 0);
 	}
 }

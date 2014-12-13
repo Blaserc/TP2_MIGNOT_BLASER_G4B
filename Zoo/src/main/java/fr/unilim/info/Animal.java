@@ -84,7 +84,8 @@ public class Animal {
 			return false;
 		}
 		final Animal animo =(Animal) o;
-		return this.getEspece()==animo.getEspece() && this.getPoids()==animo.getPoids();
+		return this.getEspece()==animo.getEspece() && 
+				this.getPoids()==animo.getPoids() && this.isCarnivore()==animo.isCarnivore();
 	}
 
 	/**
