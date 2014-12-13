@@ -6,8 +6,17 @@ import org.junit.Test;
 
 import fr.unilim.info.Animal;
 
+/**
+ * Classe testant la validité des méthodes sur les animaux.
+ * @author Adeline Mignot - Camille Blaser
+ * @version 1.0
+ * @since 10.12.2014
+ */
 public class AnimalTest {
 	
+	/**
+	 * Tester si notre méthode equals renvoie true lorsque elle compare un animal avec lui-même.
+	 */
 	@Test
 	public void equalsMemeObjet() {
 		//Given
@@ -20,6 +29,10 @@ public class AnimalTest {
 		assertTrue(resultat);
 	}
 	
+	/**
+	 * Tester si notre méthode equals renvoie false 
+	 * quand elle compare un animal avec un objet quelconque n'étant pas une instance d'animal
+	 */
 	@Test
 	public void equalsNotInstanceofAnimal() {
 		//Given
@@ -33,6 +46,10 @@ public class AnimalTest {
 		assertFalse(resultat);
 	}
 	
+	/**
+	 * Teser si notre méthode equals renvoie true
+	 * lorsqu'elle compare deux animaux de mêmes espèce, régime et poids
+	 */
 	@Test
 	public void equalsInstanceofAnimalTrue() {
 		//Given
@@ -46,6 +63,11 @@ public class AnimalTest {
 		assertTrue(resultat);
 	}
 
+	/**
+	 * Tester si notre méthode equals renvoie false
+	 * lorsqu'elle compare deux animaux de même poids
+	 * mais d'espèces et régimes différents
+	 */
 	@Test
 	public void equalsInstanceofAnimalFalseNom() {
 		//Given
@@ -59,6 +81,11 @@ public class AnimalTest {
 		assertFalse(resultat);
 	}
 	
+	/**
+	 * Tester si notre méthode equals renvoie false
+	 * lorsqu'elle compare deux animaux de même régime
+	 * mais d'espèces et de poids différents
+	 */
 	@Test
 	public void equalsInstanceofAnimalFalsePoidsEtNom() {
 		//Given
@@ -71,6 +98,12 @@ public class AnimalTest {
 		//Then
 		assertFalse(resultat);
 	}
+	
+	/**
+	 * Tester si notre méthode equals renvoie false
+	 * lorsqu'elle compare deux animaus de mêmes poids et régime
+	 * mais d'espèces différentes
+	 */
 	@Test
 	public void equalsInstanceofAnimalFalsePoids() {
 		//Given
@@ -84,6 +117,9 @@ public class AnimalTest {
 		assertFalse(resultat);
 	}
 	
+	/**
+	 * Tester si notre méthode to String renvoie ce qu'on attend.
+	 */
 	@Test
 	public void toStringTest() {
 		//Given

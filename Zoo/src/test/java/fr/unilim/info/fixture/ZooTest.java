@@ -12,15 +12,28 @@ import fr.unilim.info.Animal;
 import fr.unilim.info.SoinEnum;
 import fr.unilim.info.Zoo;
 
+/**
+ * Classe testant la validité des méthodes sur un zoo.
+ * @author Adeline Mignot - Camille Blaser
+ * @version 1.0
+ * @since 10.12.2014
+ */
 public class ZooTest {
 	
 	Zoo animauxZoo;
 	
+	/**
+	 * Initialisation d'un zoo avant chaque méthode de test.
+	 */
 	@Before
 	public void setUp() {
 		animauxZoo = AnimalFixture.creerListeAnimaux();
 	}
 
+	/**
+	 * Tester si le zoo comptabilise un animal de plus 
+	 * lorsqu'on en ajoute un
+	 */
 	@Test
 	public void ajoutAnimal() {
 		//Given
@@ -33,6 +46,10 @@ public class ZooTest {
 		assertEquals(tailleAttendue, tailleActuelle);
 		}
 	
+	/**
+	 * Tester si une exception est propagée
+	 * lorsqu'on tente d'entrer un animal null dans le zoo
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void ajoutAnimalNull() {
 		//Given
@@ -41,6 +58,10 @@ public class ZooTest {
 		//Then
 	}
 	
+	/**
+	 * Tester si le zoo comptabilise un animal de moins
+	 * lorsqu'on ôte un animal du zoo
+	 */
 	@Test
 	public void retirerAnimal() {
 		//Given
@@ -54,6 +75,10 @@ public class ZooTest {
 		assertEquals(tailleAttendue, tailleActuelle);
 	}
 	
+	/**
+	 * Tester si un exception est propagée
+	 * lorsqu'on tente de retirer du zoo un animal n'y étant pas
+	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void retirerAnimalAbsent() {
 		//Given
@@ -64,6 +89,9 @@ public class ZooTest {
 		
 	}
 	
+	/**
+	 * Tester si un zoo non vide est considéré comme tel
+	 */
 	@Test
 	public void estVide() {
 		//Given
@@ -73,6 +101,10 @@ public class ZooTest {
 		assertFalse(resultat);
 	}
 	
+	/**
+	 * Tester si l'affichage du zoo correspond à l'affichage
+	 * des caractéristiques des animaux, ligne par ligne
+	 */
 	@Test
 	public void TestToString() {
 		//Given
@@ -90,6 +122,10 @@ public class ZooTest {
 		assertEquals(expected, resultat);
 	}
 	
+	/**
+	 * Tester si la quantité de viande calculée correspond
+	 * à la somme du poids des carnivores divisée par 4
+	 */
 	@Test
 	public void quantiteViande() {
 		//Given
@@ -100,6 +136,10 @@ public class ZooTest {
 		assertEquals(expected, resultat, 0);
 	}
 	
+	/**
+	 * Tester si les animaux carnivores bénéficient tous
+	 * du soin des dents et sont les seuls
+	 */
 	@Test
 	public void testSoinDents() {
 		//Given
@@ -114,6 +154,10 @@ public class ZooTest {
 		assertEquals(animauxAttendus, animauxASoigner);
 	}
 	
+	/**
+	 * Tester si les animaux de plus de 200kg bénéficient tous
+	 * du soin des pieds, et son les seuls
+	 */
 	@Test
 	public void testSoinPieds() {
 		//Given
