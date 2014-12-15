@@ -144,7 +144,7 @@ public class AnimalTest {
 	public void equalsInstanceofAnimalFalseRegime() {
 		//Given
 		Animal dada = new Animal("dada", false, 300);
-		Animal poney = new Animal("poney", false, 400);
+		Animal poney = new Animal("dada", true, 300);
 		
 		//When
 		boolean resultat = dada.equals(poney);
